@@ -1,0 +1,22 @@
+import Constants from 'expo-constants';
+
+export const fetchEvent = async () => {
+  try {
+    return await fetch(`${Constants.manifest.extra.apiKey}/todaysEvent`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        servertoken: 'HelloServer@123',
+      },
+    })
+      .then(async (response) => {
+        console.log(`${Constants.manifest.extra.apiKey}/todaysEvent`);
+        return response.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } catch (err) {
+    console.log(err);
+  }
+};
